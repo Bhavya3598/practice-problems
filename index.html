@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+		<title>SignInUP</title>
+
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+				body{
+						margin-top: 50px;
+						margin-left: 40%;
+						background-repeat: no-repeat;
+						background-attachment: fixed;
+						background-size: cover;
+				}
+				input, button, div{
+						margin:15px;
+				}
+				h2{
+						font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+						font-weight: 100;
+						color:rgb(43, 173, 152);
+
+
+				}
+		</style>
+	</head>
+
+	<body>
+		<div id="SignIn" ></div>
+		<div id="SignUP"></div>
+		<div id="show"></div>
+		<script type="text/babel">
+				class Signup extends React.Component{
+					constructor(props){
+						super(props);
+						this.state = {
+							Uname: '',
+							Pwd: '',
+							mobilenum: '',
+							DOBirth: '',
+							msg: ''
+						}
+					}
+						render(){
+								return(
+										<div>
+										
+										<label><input onChange={this.setName} type="text" id="Uname" placeholder="Name" required/></label><br/>
+										<label><input onChange={this.setPwd} type="password" id="Pwd" placeholder="Password" required/></label><br/>
+										<label><input onChange={this.setmobilenum} type="text" id="mobilenum" placeholder="Contact no." required/></label><br/>                    
+										<label><input onChange={this.setDOBirth} type="date" id="DOBirth" placeholder="DOBirth" required/></label><br/>
+										<button onClick={this.showMessage} id="buttonup text-center" name="buttonup">Register</button>
+										<div>{this.state.msg}</div>                
+										
+										</div>
+								);
+						}
+						
+						setName = (event) => {
+							this.setState({Uname: event.target.value});
+							
+
+						}
+
+						setPwd = (event) => {
+							this.setState({Pwd: event.target.value});
+
+						}
+
+						setmobilenum = (event) => {
+							this.setState({mobilenum: event.target.value});
+
+						}
+
+						setDOBirth = (event) => {
+							this.setState({DOBirth: event.target.value});
+
+						}
+				
+
+						goto = () =>{
+								document.getElementById('SignIn').style.display = 'block'
+								document.getElementById('SignUP').style.display = 'none'
+								document.getElementById('Uname').value = ''
+								document.getElementById('Pwd').value = ''
+								document.getElementById('mobilenum').value = ''
+								document.getElementById('DOBirth').value = ''
+						}
+				}
+				document.getElementById('SignIn').style.display = 'none'
+				ReactDOM.render(<Signup />, document.querySelector("#SignUP"));
+
+				// ReactDOM.render(<Signin />, document.querySelector("#SignIn"));
+
+		</script>
+	</body>
+</html>
